@@ -38,7 +38,7 @@ for i in range(n):
 print('Average accuracy is %.2f' % (score/n))
 """
 
-
+#   交叉验证法
 from sklearn.model_selection import StratifiedKFold
 kfolk = StratifiedKFold(n_splits=10, random_state=1).split(x,y_i)
 
