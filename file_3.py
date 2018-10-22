@@ -43,6 +43,11 @@ for k, (train, test) in enumerate(kfold):
     # F1分数
     f1 = f1_score(y_true=y_i[test], y_pred=y_pred)
     print("F1_score is : %.3f" % (f1))
+    # 特异度/真负率/真阴性率
+    tn = conf_mat[0, 0]
+    fp = conf_mat[0, 1]
+    spec = float(tn) / (float(tn) + float(fp))
+    print('Spec: %.3f' % spec)
     print("\n")
 
 
