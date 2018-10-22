@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # time:2018/10/22.
-
+# 性能度量
+# 混淆矩阵，准确度，精确度，召回率，F1分数，特异度
 
 import numpy as np
 import pandas as pd
