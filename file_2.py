@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # time:2018/10/21.
+#   模型评估方法---流出法  交叉验证法  自助法
 
 import pandas as pd
 import numpy as np
@@ -40,7 +41,7 @@ print('Average accuracy is %.2f' % (score/n))
 
 #   交叉验证法
 from sklearn.model_selection import StratifiedKFold
-kfolk = StratifiedKFold(n_splits=10, random_state=1).split(x,y_i)
+kfolk = StratifiedKFold(n_splits=10, random_state=1).split(x, y_i)
 
 scores = []
 lr = LogisticRegression(C=100, random_state=1)
