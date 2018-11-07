@@ -25,7 +25,7 @@ class LinearRegressionDIY(object):
             error = y-temp
             self.w[1:] += self.eta*np.dot(x.T, error)
             self.w[0] += self.eta*np.sum(error)
-            cost = 0.5*(error**2).sum()
+            cost = 0.5*np.dot(error.T, error)
             self.costs.append(cost)
         return self
 
@@ -47,7 +47,12 @@ y_std = sc_y.fit_transform(y[:, np.newaxis]).flatten()
 lr = LinearRegressionDIY(eta=0.001, n_iter=20)
 lr.fit(X_std, y_std)
 
+print(lr.costs[-5:])
+#　print(X_std.shape, type(X_std), y_std.shape, type(y_std), lr.w.shape, type(lr.w))
 
+
+
+"""
 # 散点图是原始数据，直线式拟合后的结果
 def lin_regplot(X, y, model):
     plt.scatter(X, y, c='steelblue', edgecolor='white', s=70)
@@ -87,7 +92,7 @@ lin_regplot(X, y, slr)
 plt.xlabel('Average number of rooms [RM]')
 plt.ylabel('Price in $1000s [MEDV]')
 plt.show()
-
+"""
 
 
 
