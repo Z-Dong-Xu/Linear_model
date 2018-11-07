@@ -11,25 +11,25 @@ import matplotlib.pyplot as plt
 class LinearRegressionDIY(object):
 
     def __init__(self, eta, n_iter):
-        self.eta = eta
-        self.n_iter = n_iter
+        self.eta = eta                                  # 学习率
+        self.n_iter = n_iter                            # 迭代次数
 
-    def calculate(self, x):
+    def calculate(self, x):                             # 根据现在的系数w计算y的估计值
         return np.dot(x, self.w[1:])+self.w[0]
 
     def fit(self, x, y):
-        self.w = np.zeros(x.shape[1]+1)
-        self.costs = []
+        self.w = np.zeros(x.shape[1]+1)                 # 初始化系数
+        self.costs = []                                 # 代价
         for i in range(self.n_iter):
-            temp = self.calculate(x)
-            error = y-temp
-            self.w[1:] += self.eta*np.dot(x.T, error)
+            temp = self.calculate(x)                    # 根据现在的系数w计算y的估计值
+            error = y-temp                              # 计算误差
+            self.w[1:] += self.eta*np.dot(x.T, error)   # 用梯度下降法更新系数w
             self.w[0] += self.eta*np.sum(error)
-            cost = 0.5*np.dot(error.T, error)
+            cost = 0.5*np.dot(error.T, error)           # 当前的代价函数值
             self.costs.append(cost)
         return self
 
-    def predict(self, x):
+    def predict(self, x):                               # fit完后使用
         return self.calculate(x)
 
 df = pd.read_csv("E:\PyCharm code\Data\housing.data.txt", header=None, sep='\s+')
@@ -48,7 +48,7 @@ lr = LinearRegressionDIY(eta=0.001, n_iter=20)
 lr.fit(X_std, y_std)
 
 print(lr.costs[-5:])
-#　print(X_std.shape, type(X_std), y_std.shape, type(y_std), lr.w.shape, type(lr.w))
+print(X_std.shape, type(X_std), y_std.shape, type(y_std), lr.w.shape, type(lr.w))
 
 
 
