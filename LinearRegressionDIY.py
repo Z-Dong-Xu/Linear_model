@@ -11,16 +11,25 @@ class LinearRegressionDIY(object):
         self.eta = eta
         self.n_iter = n_iter
 
-    def fit(self, x, y):
-        w = np.zeros(x.shape[1]+1)
-        cost = []
-        for i in range(self.n_iter):
-            temp = np.dot(x, w.T)
-
-
     def calculate(self, x):
-        pass
-        return res
+        return np.dot(x, self.w[1:])+self.w[0]
+
+    def fit(self, x, y):
+        self.w = np.zeros(x.shape[1]+1)
+        self.costs = []
+        for i in range(self.n_iter):
+            temp = self.calculate(x)
+            error = y-temp
+            self.w[1:] += self.eta*np.dot(x.T, error)
+            self.w[0] += self.eta*np.sum(error)
+            cost = 0.5*(error**2).sum()
+            self.costs.append(cost)
+        return self
+    
+
+
+
+
 
 
 
