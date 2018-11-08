@@ -7,9 +7,9 @@
 from IPython.display import Image
 import pandas as pd
 
-df = pd.read_csv("E:\PyCharm code\Data\iris.data.txt",
+df = pd.read_csv("E:\PyCharm code\Data\housing.data.txt",
                  header=None,
-                 sep='\s+')  # '\s+'表示匹配任意的空白字符/空格
+                 sep='\s+')                                 # '\s+'表示匹配任意的空白字符/空格
 
 df.columns = ['CRIM', 'ZN', 'INDUS', 'CHAS',
               'NOX', 'RM', 'AGE', 'DIS', 'RAD',
