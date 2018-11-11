@@ -32,7 +32,7 @@ plt.show()
 # In[]:
 # 读入数据
 from IPython.display import Image
-from sklearn import datasets
+from sklearn import datasets                    # datasets 中有常用的数据集
 import numpy as np
 
 iris = datasets.load_iris()
@@ -46,7 +46,7 @@ print('Class labels:', np.unique(y))
 from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, random_state=1, stratify=y)
+    X, y, test_size=0.3, random_state=1, stratify=y)            # stratify=y 为了使分开的集合保持原有的分布情况
 
 print('Labels counts in y:', np.bincount(y))
 print('Labels counts in y_train:', np.bincount(y_train))
@@ -61,10 +61,9 @@ sc.fit(X_train)
 X_train_std = sc.transform(X_train)
 X_test_std = sc.transform(X_test)
 
-# In[]:
+
 from matplotlib.colors import ListedColormap
 import matplotlib.pyplot as plt
-
 
 # 分类决策区域函数
 # 注意，这个cell也必须run，把画图函数载入进来，否则后面无法调用
@@ -110,7 +109,6 @@ def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
                     label='test set')
 
 
-# In[]:
 # 自己代码实现逻辑回归
 class LogisticRegressionGD(object):
     """Logistic Regression Classifier using gradient descent.
@@ -188,7 +186,6 @@ class LogisticRegressionGD(object):
         # return np.where(self.activation(self.net_input(X)) >= 0.5, 1, 0)
 
 
-# In[]:
 X_train_01_subset = X_train[(y_train == 0) | (y_train == 1)]
 y_train_01_subset = y_train[(y_train == 0) | (y_train == 1)]
 
