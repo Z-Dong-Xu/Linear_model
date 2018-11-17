@@ -207,7 +207,7 @@ plt.show()
 
 # ### Training a logistic regression model with scikit-learn
 
-# In[]:
+
 from sklearn.linear_model import LogisticRegression
 
 lr = LogisticRegression(C=100.0, random_state=1)
